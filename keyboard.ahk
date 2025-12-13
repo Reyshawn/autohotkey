@@ -1,4 +1,5 @@
 #Requires AutoHotkey v2.0+
+#SingleInstance Force
 
 
 alpha    := StrSplit("abcfnrstuvwxyz")
@@ -85,15 +86,10 @@ F13::Send "#{Tab}"
 
 
 $CapsLock:: {
-  pressTick := A_TickCount
-  KeyWait "CapsLock"
-  if (A_TickCount - pressTick) >= 300 {
-    if GetKeyState("CapsLock", "T") {
-      SetCapsLockState "Off"
-    } else {
-      SetCapsLockState "On"
-    }
-  } else {
+  if KeyWait("CapsLock", "T0.5") {
     Send "{Alt down}{Shift}{Alt up}"
+  } else {
+    SetCapsLockState(GetKeyState("CapsLock", "T") ? "Off" : "On")
+    KeyWait "CapsLock"
   }
 }
