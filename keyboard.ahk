@@ -21,7 +21,7 @@ SendCtrl(key, withShift := false, *) {
 ; Make win key do noting when pressed
 ~LWin:: Send "{Blind}{vk07}"
 ; Hold Win and press space -> simulate a Win tap
-LWin & Space::Send "{LWin}"
+#Space::Send "{LWin}"
 
  
 for k in allKeys {
@@ -39,9 +39,14 @@ for k in shiftKeys {
 #+Left::Send "+{Home}"
 #+Right::Send "+{End}"
 
-
+; Screenshot
 #+4::Send "#+s"
+
+; Delete
 #Backspace::Send "{Delete}"
+
+; Open the emoji panel
+#^Space::Send "#."
 
 ; Simulate Alt + Tab behavior using Win + Tab
 #Tab:: {
