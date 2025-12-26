@@ -75,7 +75,7 @@ IsTaskSwitchOpen() {
 
 ; Simulate Win + Tab behavior using F13
 F13::Send "#{Tab}"
-
+!Tab::Send "#{Tab}"
 
 ; Simulate Ctrl + Click using Win + Click in the chrome
 ~LWin & LButton:: {
