@@ -60,6 +60,19 @@ for k in shiftKeys {
   Send "{Shift up}{Alt up}"
 }
 
+IsTaskSwitchOpen() {
+  return WinExist("Task Switching ahk_class XamlExplorerHostIslandWindow ahk_exe explorer.exe")
+}
+
+; Enable arrow navigation in the Task Switcher (Win + Tab), prevent win + arrow from taking over
+#HotIf IsTaskSwitchOpen()
+*Left::  Send "{Left}"
+*Right:: Send "{Right}"
+*Up::    Send "{Up}"
+*Down::  Send "{Down}"
+#HotIf
+
+
 ; Simulate Win + Tab behavior using F13
 F13::Send "#{Tab}"
 
